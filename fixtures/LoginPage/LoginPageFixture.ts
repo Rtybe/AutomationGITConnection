@@ -1,5 +1,5 @@
 import {test as loginPageTest, expect as loginPageExpect} from "@playwright/test";
-import { LoginPage } from "d:/AutomationGITConnection/pages/LoginPage";
+import { LoginPage } from "../../pages/LoginPage";
 
 export const test = loginPageTest.extend<{
     loginPage : LoginPage
