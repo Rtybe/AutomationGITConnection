@@ -18,9 +18,5 @@ export class HomePage extends CommonActions{
         
     }
     
-    
-    async fillAddressDetails(addressDetails: any){
-        addressDetails.addressType && await this.addressTypeDropdown.selectOption(addressDetails.addressType)
-   
-    }
+
 }
