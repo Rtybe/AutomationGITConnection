@@ -7,8 +7,6 @@ export class HomePage extends CommonActions{
     readonly passwordField: Locator;
 
 
-   
-
     constructor(page: Page)
     {
         super(page)
