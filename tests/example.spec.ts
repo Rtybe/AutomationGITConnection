@@ -1,13 +1,21 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "../fixtures/LoginPage/"
+
 
 test.beforeEach(async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
 });
 
-test('End to End flow Globe Exam', async ({ page }) => {
+test('End to End flow Globe Exam', async ({ page, loginPage }) => {
+
+  const userNameValue = 'standard_user'
+  const passwordValue = 'secret_sauce'
 
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle('Swag Labs');
+
+  await test.step("Login to the Application", async () => {
+        await loginPage.loginUser(userNameValue, passwordValue)
+    })
 });
 
 test('get started link', async ({ page }) => {
