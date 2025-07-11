@@ -8,7 +8,6 @@ export class LoginPage extends CommonActions{
     readonly passwordField
     readonly loginButton
 
-
     constructor(page: Page)
     {
         super(page)
@@ -18,8 +17,12 @@ export class LoginPage extends CommonActions{
         this.loginButton = page.locator("//input[@id='login-button']")
     }
 
-   
-    async loginUser (userNameValue: string, passwordValue: string)
+    /**
+     * Logging in User
+     * @param userNameValue 
+     * @param passwordValue 
+     */
+    async loginUser (userNameValue: any, passwordValue: any)
     {
         await this.enterUsername(userNameValue)
         await this.enterPassword(passwordValue)
