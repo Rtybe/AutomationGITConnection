@@ -18,7 +18,7 @@ EXTENSIONS
 
 CONFIGURATIONS
     
-    Screenshout when failure
+    Screenshout on failure when showing reports
     Environment files for Data handling
 
 FILES
@@ -32,3 +32,4 @@ CAN BE ADDED SOON
     Test Data (Data Driven Framework)
     API's
     More Validations 
+    More Hooks
