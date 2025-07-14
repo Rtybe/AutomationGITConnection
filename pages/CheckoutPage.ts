@@ -10,6 +10,15 @@ export class CheckoutPage extends CommonActions{
     readonly postalCodeField
     readonly shippingAddressField
     readonly saveAndContinueButton
+    readonly cardNumberField
+    readonly cardExpiryField
+    readonly cardCVCField
+    readonly payNowButton
+    readonly thankYouMessage
+    //---- for Verification----
+    readonly shippingAddressText
+    readonly deliveryAddressText
+    readonly billingAddressText
     
     constructor(page: Page)
     {
@@ -21,7 +30,13 @@ export class CheckoutPage extends CommonActions{
         this.postalCodeField = page.locator("//*[@id='order_ship_address_attributes_zipcode']");
         this.shippingAddressField = page.locator("//*[@placeholder='Street and house number']");
         this.saveAndContinueButton = page.locator("//*[text()='Save and Continue']");
-
+        this.cardNumberField = page.locator("//*[@id='Field-numberInput']");
+        this.cardExpiryField = page.locator("//*[@id='Field-expiryInput']");
+        this.cardCVCField = page.locator("//*[@id='Field-cvcInput']");
+        this.payNowButton = page.locator("//*[@id='checkout-payment-submit']");
+        this.thankYouMessage = page.locator("//*[@id='checkout']/div/h4");
+        this.shippingAddressText = page.locator("//*[@data-controller='checkout-address-book']/div/h5");
+        this.billingAddressText = page.locator("//*[@id='billing-address']/h5");
     }   
 
     /**
@@ -97,4 +112,55 @@ export class CheckoutPage extends CommonActions{
     async clickSaveAndContinueButton() {
         await this.saveAndContinueButton.click();
     }   
+    //----------------------------------- End of Checkout Page  ----------------------------------
+
+    // ---------------------------------- Payment Page  ----------------------------------
+
+    /**
+     * Fill up the payment form
+     * @param cardNumber 
+     * @param cardExpiry 
+     * @param cardCVC 
+     */
+    async fillUpPaymentForm(cardNumber: string, cardExpiry: string, cardCVC: string) {
+        await this.fillCardNumberField(cardNumber); 
+        await this.fillCardExpiryField(cardExpiry);
+        await this.fillCardCVCField(cardCVC)  
+    }
+    /**
+     *  Fill Card Number Field
+     * @param cardNumber 
+     */
+    async fillCardNumberField(cardNumber: string) {
+        await this.cardNumberField.fill(cardNumber);
+    }
+
+    /**
+     * Fill Card Expiry Field
+     * @param cardExpiry 
+     */
+    async fillCardExpiryField(cardExpiry: string) {
+        await this.cardExpiryField.fill(cardExpiry);
+    }
+
+    /**
+     * Fill Card CVC Field
+     * @param cardCVC 
+     */
+    async fillCardCVCField(cardCVC: string) {
+        await this.cardCVCField.fill(cardCVC);
+    }
+
+    /**
+     * Click Pay Now Button
+     */
+    async clickPayNowButton() {
+        await this.payNowButton.click();
+    }
+
+    //----------------------------------- End of Payment Page  ----------------------------------
+
+    // ---------------------------------- Order Confirmation Page  ----------------------------------
+
+
 }

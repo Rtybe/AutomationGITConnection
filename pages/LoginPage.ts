@@ -3,6 +3,7 @@ import { CommonActions } from "../commonAction";
 
 export class LoginPage extends CommonActions{
     
+    readonly loginPageTitle
     readonly userNameField
     readonly passwordField
     readonly loginButton
@@ -10,6 +11,7 @@ export class LoginPage extends CommonActions{
     constructor(page: Page)
     {
         super(page)
+        this.loginPageTitle = page.locator("//*[@id='login']/div/h2");
         this.userNameField = page.locator("//input[@id='user-name']")
         this.passwordField = page.locator("//input[@id='password']")
         this.loginButton = page.locator("//input[@id='login-button']")
