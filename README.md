@@ -32,3 +32,4 @@ CAN BE ADDED SOON
     Test Data (Data Driven Framework)
     API's
     More Validations 
+    More Hooks
