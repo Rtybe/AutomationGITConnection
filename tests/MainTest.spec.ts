@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
   test('End to End flow', async ({ page, signUpPage }) => {
 
     // Assert the title
-    await expect(page).toHaveTitle('Welcome to the Spree Commerce Demo!');
+    await expect(page).toHaveTitle('Spree Commerce DEMO');
 
     // Click on the user icon to open the login form
     await test.step("Click on User Icon", async () => {
