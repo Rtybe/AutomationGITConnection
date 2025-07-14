@@ -18,9 +18,9 @@ EXTENSIONS
 
 CONFIGURATIONS
     
-    Screenshout on failure when showing reports
-    Environment files for Data handling
-    Enabled Manual Trigger in the pipeline
+    Screenshout on failure: ON  (Handling reports)
+    Environment files: ON
+    Enabled Manual Trigger in the pipeline: ON
 
 FILES
     
