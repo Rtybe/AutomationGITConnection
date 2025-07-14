@@ -1,5 +1,5 @@
 import {test as homePageTest, expect as homePageExpect} from "@playwright/test";
-import { HomePage } from "../../pages/HomePage";
+import { HomePage } from "../../pages/Homepage";
 
 export const test = homePageTest.extend<{
     homePage : HomePage

@@ -3,7 +3,6 @@ import { CommonActions } from "../commonAction";
 
 export class LoginPage extends CommonActions{
     
-    readonly userIcon
     readonly userNameField
     readonly passwordField
     readonly loginButton
@@ -11,7 +10,6 @@ export class LoginPage extends CommonActions{
     constructor(page: Page)
     {
         super(page)
-        this.userIcon = page.locator("(//*[@class='hidden lg:flex'])[3]")
         this.userNameField = page.locator("//input[@id='user-name']")
         this.passwordField = page.locator("//input[@id='password']")
         this.loginButton = page.locator("//input[@id='login-button']")
@@ -22,7 +20,7 @@ export class LoginPage extends CommonActions{
      * @param userNameValue 
      * @param passwordValue 
      */
-    async loginUser (userNameValue: any, passwordValue: any)
+    async loginToApplication (userNameValue: any, passwordValue: any)
     {
         await this.enterUsername(userNameValue)
         await this.enterPassword(passwordValue)

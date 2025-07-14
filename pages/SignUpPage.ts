@@ -3,6 +3,7 @@ import { CommonActions } from "../commonAction";
 
 export class SignUpPage extends CommonActions{
     
+    readonly userIconLink
     readonly signUpLink
     readonly emailField
     readonly passwordField 
@@ -12,12 +13,21 @@ export class SignUpPage extends CommonActions{
     constructor(page: Page)
     {
         super(page)
-        this.signUpLink = page.locator("//a[text()='Sign Up']")
+        this.userIconLink = page.locator("(//*[@class='hidden lg:flex'])[3]")
+        this.signUpLink = page.locator("//*[text()='Sign Up']")
         this.emailField = page.locator("//input[@id='user_email']");
         this.passwordField = page.locator("//input[@id='user_password']");
         this.confirmPasswordField = page.locator("//input[@id='user_password_confirmation']");
-        this.signUpButton = page.locator("//input[@type='submit']");
+        this.signUpButton = page.locator("//*[@value='Sign Up']");
     }   
+
+    /**
+     * Click on the User Icon Link
+     */
+    async clickUserIconLink() {
+        await this.userIconLink.click();    
+    }
+
     /**
      * Click Sign Up Link
      */
