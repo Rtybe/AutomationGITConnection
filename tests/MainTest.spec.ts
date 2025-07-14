@@ -44,6 +44,7 @@ test.beforeEach(async ({ page }) => {
     await test.step("Login to the Application", async () => {
         await loginPage.loginToApplication(process.env.USERNAME!, process.env.PASSWORD!);
         await commonActions.waitForPageLoad();
+    });
 
     // Click on the first product link on the product detail page
     await test.step("Click first product link", async () => {
