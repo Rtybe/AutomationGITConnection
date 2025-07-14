@@ -18,7 +18,7 @@ EXTENSIONS
 
 CONFIGURATIONS
     
-    Screenshout when failure
+    Screenshout when failure when showing reports
     Environment files for Data handling
 
 FILES
