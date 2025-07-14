@@ -47,6 +47,9 @@ export class SignUpPage extends CommonActions{
         await this.confirmPasswordField.fill(confirmPassword);
     }
 
+    /**
+     * Click Sign Up Button
+     */
     async clickSignUpButton() {
         await this.signUpButton.click();
     }

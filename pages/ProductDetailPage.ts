@@ -78,5 +78,4 @@ export class ProductDetailPage extends CommonActions{
     async clickCheckoutButton() {
         await this.checkoutButton.click();
     }
-
 }

@@ -20,8 +20,7 @@ export class LoginPage extends CommonActions{
      * @param userNameValue 
      * @param passwordValue 
      */
-    async loginToApplication (userNameValue: any, passwordValue: any)
-    {
+    async loginToApplication (userNameValue: any, passwordValue: any) {
         await this.enterUsername(userNameValue)
         await this.enterPassword(passwordValue)
         await this.clickLoginButton()
@@ -31,8 +30,7 @@ export class LoginPage extends CommonActions{
      * Enter Username
      * @param username 
      */
-    async enterUsername (userNameValue: string)
-    {
+    async enterUsername (userNameValue: string) {
         await this.userNameField.fill(userNameValue);
     }
 
@@ -40,16 +38,14 @@ export class LoginPage extends CommonActions{
      * Enter Password
      * @param password 
      */
-    async enterPassword (passwordValue:string)
-    {
+    async enterPassword (passwordValue:string) {
         await this.userNameField.fill(passwordValue);
     }
     
     /**
      * Click Login Button
      */
-    async clickLoginButton ()
-    {
+    async clickLoginButton () {
         await this.loginButton.click()
     }
 }
