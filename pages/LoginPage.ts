@@ -11,7 +11,7 @@ export class LoginPage extends CommonActions{
     constructor(page: Page)
     {
         super(page)
-        this.userIcon = page.locator('#')
+        this.userIcon = page.locator("(//*[@class='hidden lg:flex'])[3]")
         this.userNameField = page.locator("//input[@id='user-name']")
         this.passwordField = page.locator("//input[@id='password']")
         this.loginButton = page.locator("//input[@id='login-button']")
