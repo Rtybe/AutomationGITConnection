@@ -20,6 +20,7 @@ CONFIGURATIONS
     
     Screenshout on failure when showing reports
     Environment files for Data handling
+    Enabled Manual Trigger in the pipeline
 
 FILES
     
