@@ -1,15 +1,20 @@
 import { Page, Locator } from "@playwright/test";
 import { CommonActions } from "../commonAction";
+import { time } from "console";
 
 export class CheckoutPage extends CommonActions{
     
-    readonly emailField
+    readonly checkOutButton
     readonly firstNameField
     readonly lastNameField
     readonly cityField
     readonly postalCodeField
     readonly shippingAddressField
+    readonly firstAddressSelection
     readonly saveAndContinueButton
+
+    readonly SaveandContinueDeliveryButton
+
     readonly cardNumberField
     readonly cardExpiryField
     readonly cardCVCField
@@ -23,16 +28,20 @@ export class CheckoutPage extends CommonActions{
     constructor(page: Page)
     {
         super(page)
-        this.emailField = page.locator("//*[@id='order_ship_address_attributes_email']");
-        this.firstNameField = page.locator("//*[@id='order_ship_address_attributes_first_name']");
-        this.lastNameField = page.locator("//*[@id='order_ship_address_attributes_last_name']");
-        this.cityField = page.locator("//*[@id='order_ship_address_attributes_city']");
-        this.postalCodeField = page.locator("//*[@id='order_ship_address_attributes_zipcode']");
-        this.shippingAddressField = page.locator("//*[@placeholder='Street and house number']");
-        this.saveAndContinueButton = page.locator("//*[text()='Save and Continue']");
-        this.cardNumberField = page.locator("//*[@id='Field-numberInput']");
-        this.cardExpiryField = page.locator("//*[@id='Field-expiryInput']");
-        this.cardCVCField = page.locator("//*[@id='Field-cvcInput']");
+        this.checkOutButton = page.locator("//*[text()='Checkout']");
+        this.firstNameField = page.locator("//*[@placeholder='First name']");
+        this.lastNameField = page.locator("//*[@placeholder='Last name']");
+        this.shippingAddressField = page.locator("(//*[@placeholder='Street and house number'])[1]");
+        this.cityField = page.locator("//*[@placeholder='City']");
+        this.postalCodeField = page.locator("//*[@placeholder='Postal Code']");
+        this.firstAddressSelection = page.locator("//*[@data-address-autocomplete-target='suggestionsBoxList']/li[1]");
+        this.saveAndContinueButton = page.locator("//button[text()='Save and Continue']");
+
+        this.SaveandContinueDeliveryButton = page.locator("//*[@data-controller='checkout-delivery']/div[2]/div/button");
+
+        this.cardNumberField = page.locator('#Field-numberInput');
+        this.cardExpiryField = page.locator('#Field-expiryInput');
+        this.cardCVCField = page.locator('#Field-cvcInput');
         this.payNowButton = page.locator("//*[@id='checkout-payment-submit']");
         this.thankYouMessage = page.locator("//*[@id='checkout']/div/h4");
         this.shippingAddressText = page.locator("//*[@data-controller='checkout-address-book']/div/h5");
@@ -40,31 +49,27 @@ export class CheckoutPage extends CommonActions{
     }   
 
     /**
+     * Click on the Check Out Button
+     */
+    async clickCheckOutButton() {
+        await this.checkOutButton.click();
+    }
+    
+    /**
      *  Fill up the checkout form
-     * @param email 
      * @param firstName 
      * @param lastName 
      * @param city 
      * @param postalCode 
      * @param shippingAddress 
      */
-    async fillUpCheckOutForm(email: string, firstName: string, lastName: string, city: string, postalCode: string, shippingAddress: string) {
-        await this.fillEmailField(email);
+    async fillUpCheckOutForm(firstName: string, lastName: string, city: string, postalCode: string, shippingAddress: string) {
         await this.fillFirstNameField(firstName);
         await this.fillLastNameField(lastName);
         await this.fillCityField(city);
         await this.fillPostalCodeField(postalCode);
         await this.fillShippingAddressField(shippingAddress);
-        await this.clickSaveAndContinueButton();
     }   
-
-    /**
-     *  Fill Email Field
-     * @param email 
-     */
-    async fillEmailField(email: string) {   
-        await this.emailField.fill(email);
-    }
 
     /**
      * Fill First Name Field
@@ -113,44 +118,16 @@ export class CheckoutPage extends CommonActions{
         await this.saveAndContinueButton.click();
     }   
     //----------------------------------- End of Checkout Page  ----------------------------------
-
-    // ---------------------------------- Payment Page  ----------------------------------
-
+    // ---------------------------------- Delivery Page  ----------------------------------
     /**
-     * Fill up the payment form
-     * @param cardNumber 
-     * @param cardExpiry 
-     * @param cardCVC 
+     * Click Save and Continue Button on Delivery Page
      */
-    async fillUpPaymentForm(cardNumber: string, cardExpiry: string, cardCVC: string) {
-        await this.fillCardNumberField(cardNumber); 
-        await this.fillCardExpiryField(cardExpiry);
-        await this.fillCardCVCField(cardCVC)  
-    }
-    /**
-     *  Fill Card Number Field
-     * @param cardNumber 
-     */
-    async fillCardNumberField(cardNumber: string) {
-        await this.cardNumberField.fill(cardNumber);
+    async clickSaveandContinueDeliveryButton() {
+        await this.SaveandContinueDeliveryButton.waitFor({ state: 'visible' });
+        await this.SaveandContinueDeliveryButton.click({timeout: 9000});
     }
 
-    /**
-     * Fill Card Expiry Field
-     * @param cardExpiry 
-     */
-    async fillCardExpiryField(cardExpiry: string) {
-        await this.cardExpiryField.fill(cardExpiry);
-    }
-
-    /**
-     * Fill Card CVC Field
-     * @param cardCVC 
-     */
-    async fillCardCVCField(cardCVC: string) {
-        await this.cardCVCField.fill(cardCVC);
-    }
-
+    //----------------------------------- End of Delivery Page  ----------------------------------
     /**
      * Click Pay Now Button
      */
@@ -158,9 +135,21 @@ export class CheckoutPage extends CommonActions{
         await this.payNowButton.click();
     }
 
+    /**
+     * Implement filling card details using iFrame
+     * This method assumes that the card details input fields are inside an iFrame.
+     */
+    async fillCardDetailsUsingiFrame(cardNumberValue: string, cardExpiryValue: string, cardCVCValue: string ) {
+        const iframeLocator = this.page.frameLocator('div.__PrivateStripeElement iframe')
+        const cardNumber = await iframeLocator.locator(this.cardNumberField)
+        await cardNumber.click()
+        await cardNumber.fill(cardNumberValue)
+        const cardExpDate = await iframeLocator.locator(this.cardExpiryField)
+        await cardExpDate.click()
+        await cardExpDate.fill(cardExpiryValue)
+        const cardCVC = await iframeLocator.locator(this.cardCVCField)
+        await cardCVC.click()
+        await cardCVC.fill(cardCVCValue)
+    }
     //----------------------------------- End of Payment Page  ----------------------------------
-
-    // ---------------------------------- Order Confirmation Page  ----------------------------------
-
-
 }

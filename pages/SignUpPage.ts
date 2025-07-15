@@ -10,6 +10,7 @@ export class SignUpPage extends CommonActions{
     readonly passwordField 
     readonly confirmPasswordField
     readonly signUpButton
+    readonly signUpSuccessMessage
 
     constructor(page: Page)
     {
@@ -21,6 +22,7 @@ export class SignUpPage extends CommonActions{
         this.passwordField = page.locator("//input[@id='user_password']");
         this.confirmPasswordField = page.locator("//input[@id='user_password_confirmation']");
         this.signUpButton = page.locator("//*[@value='Sign Up']");
+        this.signUpSuccessMessage = page.locator("//*[@id='flashes']");    
     }   
 
     /**
@@ -55,5 +57,4 @@ export class SignUpPage extends CommonActions{
     async clickSignUpButton() {
         await this.signUpButton.click();
     }
-
 }

@@ -3,7 +3,8 @@ import { SignUpPage } from "../../pages/SignUpPage";
 import { ProductDetailPage } from "../../pages/ProductDetailPage";
 import { CommonActions } from "../../commonAction";
 import { CheckoutPage } from "../../pages/CheckoutPage";
-import { LoginPage } from "../../pages/LoginPage";  
+import { LoginPage } from "../../pages/LoginPage"; 
+import { HomePage } from "../../pages/Homepage"; 
 
 export const test = signUpPageTest.extend<{
     signUpPage : SignUpPage
@@ -11,6 +12,7 @@ export const test = signUpPageTest.extend<{
     commonActions: CommonActions
     checkoutPage: CheckoutPage
     loginPage: LoginPage
+    homePage: HomePage
 }>({
     signUpPage: async({page}, use) => {
         await use(new SignUpPage(page))
@@ -26,6 +28,9 @@ export const test = signUpPageTest.extend<{
     },
     loginPage: async({page}, use) => {
         await use(new LoginPage(page))
+    },
+    homePage: async({page}, use) => {
+        await use(new HomePage(page))
     },
 });
 

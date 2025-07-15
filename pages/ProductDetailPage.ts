@@ -10,18 +10,18 @@ export class ProductDetailPage extends CommonActions{
     readonly sizeLargeOption   
     readonly addToCartButton
     readonly checkoutButton
+    readonly sizeSelectedText
     
     constructor(page: Page)
     {
         super(page)
         this.firstProductLink = page.locator("(//*[@class='line-clamp-1 product-card-title'])[1]")
-        this.choseSizeDropdown = page.locator("(//*[text()='Please choose Size'])[1]")
-        this.sizeSmallOption = page.locator('(//input[@name="Size"])[1]')
-        this.sizeMediumOption = page.locator('(//input[@name="Size"])[2]')
-        this.sizeLargeOption = page.locator('(//input[@name="Size"])[3]')  
+        this.choseSizeDropdown = page.locator("//*[@data-action='click->dropdown#toggle click@window->dropdown#hide']")
+        this.sizeSmallOption = page.locator("(//*[@data-dropdown-target='menu']/div/label)[1]")
+        this.sizeMediumOption = page.locator("(//*[@data-dropdown-target='menu']/div/label)[2]")
+        this.sizeLargeOption = page.locator("(//*[@data-dropdown-target='menu']/div/label)[3]")  
         this.addToCartButton = page.locator("(//*[@class='btn-primary btn-icon w-full h-12 add-to-cart-button'])[1]")
         this.checkoutButton = page.locator("//*[@data-cart-target='checkoutButton']");     
-
     }   
 
     /**
@@ -55,7 +55,7 @@ export class ProductDetailPage extends CommonActions{
         let sizeText = "";
         if (size === "S") {
             sizeText = "Small";
-            await this.sizeSmallOption.click();
+            await this.sizeSmallOption.click();    
         } else if (size === "M") {
             sizeText = "Medium";
             await this.sizeMediumOption.click();
@@ -76,6 +76,9 @@ export class ProductDetailPage extends CommonActions{
      * Click on the "Checkout" button
      */
     async clickCheckoutButton() {
-        await this.checkoutButton.click();
+        // for any animations or transitions
+        await this.checkoutButton.click({timeout: 9000});
     }
+
+
 }
