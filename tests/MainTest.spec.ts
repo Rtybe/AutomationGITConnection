@@ -1,6 +1,7 @@
-import { test, expect } from "../fixtures/SignUp";
+import { test, expect } from "../fixtures/index";
 import dotenv from "dotenv"
 dotenv.config()
+
 
 test.beforeEach(async ({ page }) => {
   // Navigate to the application before each test
@@ -13,7 +14,7 @@ test.beforeEach(async ({ page }) => {
     const timestamp = Date.now();
     return `user${timestamp}@example.com`;
   }
-  
+
   test.slow();
 
   test('End to End flow', async ({ page, signUpPage, productDetailPage, commonActions, checkoutPage, loginPage, homePage }) => {
