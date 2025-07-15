@@ -15,10 +15,9 @@ test.beforeEach(async ({ page }) => {
     return `user${timestamp}@example.com`;
   }
 
-  test.slow();
+test('End to End flow', async ({ page, signUpPage, productDetailPage, commonActions, checkoutPage, loginPage, homePage }) => {
 
-  test('End to End flow', async ({ page, signUpPage, productDetailPage, commonActions, checkoutPage, loginPage, homePage }) => {
-
+    test.slow();
     const randomEmail = createRandomEmail();
     // Assert the title
     await test.step("Assert Page Title", async () => {

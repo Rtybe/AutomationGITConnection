@@ -5,7 +5,9 @@ export const test = baseTest.extend<{
   basePage: BasePage;
 
 }>({
-  basePage: async ({ page }, use) => {
+  basePage: async ({ page }, use
+    
+  ) => {
     await use(new BasePage(page));
   },
 });
