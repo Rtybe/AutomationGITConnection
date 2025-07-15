@@ -2,7 +2,6 @@ import { test, expect } from "../fixtures/index";
 import dotenv from "dotenv"
 dotenv.config()
 
-
 test.beforeEach(async ({ page }) => {
   // Navigate to the application before each test
   // This ensures that the page is loaded before running tests

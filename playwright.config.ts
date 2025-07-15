@@ -15,7 +15,7 @@ export default defineConfig({
 
   timeout: 60 * 1000, // Set a global timeout of 60 seconds for each test
 
-  testDir: './tests',
+  testDir: './tests/playwright',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
