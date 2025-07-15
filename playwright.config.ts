@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { PlaywrightTestConfig, devices } from "@playwright/test";
 import path from 'path'
 /**
  * Read environment variables from file.
@@ -11,11 +11,12 @@ import path from 'path'
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+
+export const config: PlaywrightTestConfig = {
+  testDir: "./tests",
 
   timeout: 60 * 1000, // Set a global timeout of 60 seconds for each test
 
-  testDir: path.join(__dirname, '..'),
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -85,4 +86,4 @@ export default defineConfig({
   //   url: 'http://localhost:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-});
+}
