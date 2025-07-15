@@ -1,4 +1,4 @@
-import { test, expect } from "../fixtures/BaseFixture";
+import { test, expect } from "../fixtures/SignUpPageFixture/index";
 import dotenv from "dotenv"
 dotenv.config()
 
