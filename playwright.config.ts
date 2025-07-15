@@ -13,7 +13,7 @@ import path from 'path'
  */
 
 export const config: PlaywrightTestConfig = {
-  testDir: "./tests",
+  testDir: '../tests',
 
   timeout: 60 * 1000, // Set a global timeout of 60 seconds for each test
 
