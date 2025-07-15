@@ -1,5 +1,5 @@
-import { PlaywrightTestConfig, devices } from "@playwright/test";
-import path from 'path'
+import { defineConfig, devices } from '@playwright/test';
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -11,12 +11,8 @@ import path from 'path'
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-
-export const config: PlaywrightTestConfig = {
-  testDir: '../tests',
-
-  timeout: 60 * 1000, // Set a global timeout of 60 seconds for each test
-
+export default defineConfig({
+  testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -29,11 +25,8 @@ export const config: PlaywrightTestConfig = {
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    screenshot: 'only-on-failure',
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
-
-    video: 'retain-on-failure',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -51,15 +44,10 @@ export const config: PlaywrightTestConfig = {
       use: { ...devices['Desktop Firefox'] },
     },
 
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-
-    
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
 
     /* Test against mobile viewports. */
     // {
@@ -73,7 +61,9 @@ export const config: PlaywrightTestConfig = {
 
     /* Test against branded browsers. */
     // {
-    //   
+    //   name: 'Microsoft Edge',
+    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    // },
     // {
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
@@ -86,4 +76,4 @@ export const config: PlaywrightTestConfig = {
   //   url: 'http://localhost:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-}
+});
