@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-
+import path from 'path'
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -15,7 +15,7 @@ export default defineConfig({
 
   timeout: 60 * 1000, // Set a global timeout of 60 seconds for each test
 
-  testDir: './tests/playwright',
+  testDir: path.join(__dirname, '..'),
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
