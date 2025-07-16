@@ -1,8 +1,8 @@
 import { Locator, Page } from "@playwright/test";
 import { CommonActions } from "../commonAction";
 
-export class SignUpPage extends CommonActions{
-    
+export class SignUpPageNow extends CommonActions{
+
     readonly signUpPageTitle: Locator
     readonly userIconLink: Locator
     readonly signUpLink: Locator
