@@ -146,10 +146,10 @@ test('End to End flow', async ({ page, signUpPage, productDetailPage, commonActi
     });
 });
 
-//  Logout after the test
-test.afterEach(async ({ page, homePage, signUpPage }) => {
-  await page.goto('https://demo.spreecommerce.org/');
-  await signUpPage.clickUserIconLink();
-  await homePage.clickLogOutButton();
-  console.log("User is logged out successfully");
-});
+// //  Logout after the test
+// test.afterEach(async ({ page, homePage, signUpPage }) => {
+//   await page.goto('https://demo.spreecommerce.org/');
+//   await signUpPage.clickUserIconLink();
+//   await homePage.clickLogOutButton();
+//   console.log("User is logged out successfully");
+// });
