@@ -79,6 +79,4 @@ export class ProductDetailPage extends CommonActions{
         // for any animations or transitions
         await this.checkoutButton.click({timeout: 9000});
     }
-
-
 }
