@@ -4,8 +4,8 @@ import { CommonActions } from "../commonAction";
 import { CheckoutPage } from "../pages/CheckoutPage";
 import { LoginPage } from "../pages/LoginPage";
 import { ProductDetailPage } from "../pages/ProductDetailPage";
-import { SignUpPage } from "../pages/SignupPage";
 import { HomePage } from "../pages/Homepage";
+import { SignUpPage } from "../pages/SignupPage";
 
 export const test = baseTest.extend<{
   basePage: BasePage;
