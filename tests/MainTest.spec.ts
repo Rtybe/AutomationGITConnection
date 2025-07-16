@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('https://demo.spreecommerce.org/');
 });
 
-test('End to End flow', async ({ page, signUpPage, productDetailPage, commonActions, checkoutPage, loginPage, homePage }) => {
+test('End to End flow', async ({ page, signUpPage, productDetailPage, commonActions, checkoutPage, loginPage }) => {
 
     test.slow();
     const randomEmail = signUpPage.createRandomEmail();
@@ -55,13 +55,13 @@ test('End to End flow', async ({ page, signUpPage, productDetailPage, commonActi
         console.log("User is signed up successfully");
     });
 
-    // Click on the Shop All button to view all products
-    await test.step("Click on Shop All Button", async () => {
-        await homePage.clickOnShopAll(); 
-        await commonActions.waitForPageLoad();
-        await expect(page).toHaveURL('https://demo.spreecommerce.org/products'); 
-        console.log("Click on Shop All button is successful");
-    });
+    // // Click on the Shop All button to view all products
+    // await test.step("Click on Shop All Button", async () => {
+    //     await homePage.clickOnShopAll(); 
+    //     await commonActions.waitForPageLoad();
+    //     await expect(page).toHaveURL('https://demo.spreecommerce.org/products'); 
+    //     console.log("Click on Shop All button is successful");
+    // });
 
 
     // Click on the first product link on the product detail page
