@@ -1,4 +1,4 @@
-import {test as base, Page } from "@playwright/test";
+import {expect , Page } from "@playwright/test";
 
 export class BasePage {
     readonly page: Page

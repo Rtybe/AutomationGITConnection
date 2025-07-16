@@ -1,16 +1,16 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 import { CommonActions } from "../commonAction";
 
 export class ProductDetailPage extends CommonActions{
     
-    readonly firstProductLink
-    readonly choseSizeDropdown
-    readonly sizeSmallOption
-    readonly sizeMediumOption
-    readonly sizeLargeOption   
-    readonly addToCartButton
-    readonly checkoutButton
-    readonly sizeSelectedText
+    readonly firstProductLink: Locator
+    readonly choseSizeDropdown: Locator
+    readonly sizeSmallOption: Locator
+    readonly sizeMediumOption: Locator
+    readonly sizeLargeOption: Locator
+    readonly addToCartButton: Locator
+    readonly checkoutButton: Locator
+    readonly sizeSelectedText: Locator
     
     constructor(page: Page)
     {

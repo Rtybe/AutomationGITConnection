@@ -1,29 +1,28 @@
 import { Page, Locator } from "@playwright/test";
 import { CommonActions } from "../commonAction";
-import { time } from "console";
 
 export class CheckoutPage extends CommonActions{
     
-    readonly checkOutButton
-    readonly firstNameField
-    readonly lastNameField
-    readonly cityField
-    readonly postalCodeField
-    readonly shippingAddressField
-    readonly firstAddressSelection
-    readonly saveAndContinueButton
+    readonly checkOutButton: Locator
+    readonly firstNameField: Locator
+    readonly lastNameField: Locator
+    readonly cityField: Locator
+    readonly postalCodeField: Locator
+    readonly shippingAddressField: Locator
+    readonly firstAddressSelection: Locator
+    readonly saveAndContinueButton: Locator
 
-    readonly SaveandContinueDeliveryButton
+    readonly SaveandContinueDeliveryButton: Locator
 
-    readonly cardNumberField
-    readonly cardExpiryField
-    readonly cardCVCField
-    readonly payNowButton
-    readonly thankYouMessage
+    readonly cardNumberField: Locator
+    readonly cardExpiryField: Locator
+    readonly cardCVCField: Locator
+    readonly payNowButton: Locator
+    readonly thankYouMessage: Locator
     //---- for Verification----
-    readonly shippingAddressText
-    readonly deliveryAddressText
-    readonly billingAddressText
+    readonly shippingAddressText: Locator
+    readonly deliveryAddressText: Locator
+    readonly billingAddressText: Locator
     
     constructor(page: Page)
     {

@@ -3,10 +3,10 @@ import { CommonActions } from "../commonAction";
 
 export class LoginPage extends CommonActions{
     
-    readonly loginPageTitle
-    readonly userNameField
-    readonly passwordField
-    readonly loginButton
+    readonly loginPageTitle: Locator
+    readonly userNameField: Locator
+    readonly passwordField: Locator
+    readonly loginButton: Locator
 
     constructor(page: Page)
     {

@@ -1,16 +1,16 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 import { CommonActions } from "../commonAction";
 
 export class SignUpPage extends CommonActions{
     
-    readonly signUpPageTitle
-    readonly userIconLink
-    readonly signUpLink
-    readonly emailField
-    readonly passwordField 
-    readonly confirmPasswordField
-    readonly signUpButton
-    readonly signUpSuccessMessage
+    readonly signUpPageTitle: Locator
+    readonly userIconLink: Locator
+    readonly signUpLink: Locator
+    readonly emailField: Locator
+    readonly passwordField : Locator
+    readonly confirmPasswordField: Locator
+    readonly signUpButton: Locator
+    readonly signUpSuccessMessage: Locator
 
     constructor(page: Page)
     {

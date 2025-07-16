@@ -1,4 +1,5 @@
-import { test, expect } from '../fixtures/SignUpPageFixture/index';
+import { expect } from '@playwright/test';
+import { test } from '../fixtures/BaseFixture';
 
 import dotenv from "dotenv"
 dotenv.config()
@@ -72,7 +73,7 @@ test('End to End flow', async ({ page, signUpPage, productDetailPage, commonActi
 
     // Select size of the product
     await test.step("Select Size of the Product", async () => {
-        await productDetailPage.selectSizeOfProduct("S");
+        await productDetailPage.selectSizeOfProduct("M");
         await commonActions.waitForPageLoad();
         console.log("Size of the product is selected successfully");
     });

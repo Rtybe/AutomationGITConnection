@@ -3,8 +3,8 @@ import { CommonActions } from "../commonAction";
 
 export class HomePage extends CommonActions{
     
-    readonly logOutButton
-    readonly shopAllButton
+    readonly logOutButton: Locator
+    readonly shopAllButton: Locator
 
     constructor(page: Page)
     {
