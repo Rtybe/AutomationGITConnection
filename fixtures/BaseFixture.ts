@@ -2,10 +2,10 @@ import { test as baseTest } from "@playwright/test";
 import { BasePage } from "../basePage";
 import { CommonActions } from "../commonAction";
 import { CheckoutPage } from "../pages/CheckoutPage";
-import { HomePage } from "../pages/Homepage";
 import { LoginPage } from "../pages/LoginPage";
 import { ProductDetailPage } from "../pages/ProductDetailPage";
 import { SignUpPage } from "../pages/SignupPage";
+import { HomePage } from "../pages/Homepage";
 
 export const test = baseTest.extend<{
   basePage: BasePage;
