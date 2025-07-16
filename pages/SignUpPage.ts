@@ -57,4 +57,10 @@ export class SignUpPage extends CommonActions{
     async clickSignUpButton() {
         await this.signUpButton.click();
     }
+
+    // Utility function to generate a random email address
+    async createRandomEmail() {
+        const timestamp = Date.now();
+        return `user${timestamp}@example.com`;
+    }
 }

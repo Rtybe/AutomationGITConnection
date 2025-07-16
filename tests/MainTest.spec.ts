@@ -9,16 +9,10 @@ test.beforeEach(async ({ page }) => {
   await page.goto('https://demo.spreecommerce.org/');
 });
 
-  // Utility function to generate a random email address
-  function createRandomEmail(): string {
-    const timestamp = Date.now();
-    return `user${timestamp}@example.com`;
-  }
-
 test('End to End flow', async ({ page, signUpPage, productDetailPage, commonActions, checkoutPage, loginPage, homePage }) => {
 
     test.slow();
-    const randomEmail = createRandomEmail();
+    const randomEmail = signUpPage.createRandomEmail();
     // Assert the title
     await test.step("Assert Page Title", async () => {
         await expect(page).toHaveTitle('Spree Commerce DEMO');
@@ -47,7 +41,7 @@ test('End to End flow', async ({ page, signUpPage, productDetailPage, commonActi
     // Sign Up User using the credentials from .env file 
     await test.step("Sign Up to the Application", async () => {
         await signUpPage.fillSignUpForm(
-            randomEmail,
+            await randomEmail,
             process.env.PASSWORD!,
             process.env.PASSWORD_CONFIRM!)
             console.log(
