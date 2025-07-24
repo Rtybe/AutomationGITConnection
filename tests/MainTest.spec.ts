@@ -73,7 +73,7 @@ test('End to End flow', async ({ page, signUpPage, productDetailPage, commonActi
 
     // Select size of the product
     await test.step("Select Size of the Product", async () => {
-        await productDetailPage.selectSizeOfProduct("M");
+        await productDetailPage.selectSizeOfProduct("L");
         await commonActions.waitForPageLoad();
         console.log("Size of the product is selected successfully");
     });
